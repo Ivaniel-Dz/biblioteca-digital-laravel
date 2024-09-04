@@ -148,4 +148,20 @@ return [
 
     ],
 
+    'oracle' => [
+        'driver'         => 'oracle',
+        'tns'            => env('DB_TNS', ''),
+        'host'           => env('DB_HOST', '127.0.0.1'),
+        'port'           => env('DB_PORT', '1521'),
+        'database'       => env('DB_DATABASE', 'ORCL'),
+        'username'       => env('DB_USERNAME', 'LIBRERIA'),
+        'password'       => env('DB_PASSWORD', 'LB2024'),
+        'charset'        => env('DB_CHARSET', 'AL32UTF8'),
+        'prefix'         => '',
+        'prefix_schema'  => env('DB_SCHEMA_PREFIX', ''),
+        'edition'        => env('DB_EDITION', 'ora$base'),
+        'server_version' => env('DB_SERVER_VERSION', '19c'),
+    ],
+
+
 ];
