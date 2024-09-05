@@ -4,10 +4,10 @@ import forms from '@tailwindcss/forms';
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
-        './resources/js/**/*.vue',
+        "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./storage/framework/views/*.php",
+        "./resources/views/**/*.blade.php",
+        "./resources/js/**/*.vue",
     ],
 
     theme: {
@@ -20,32 +20,28 @@ export default {
                 "color-main": "",
                 "color-txt": "",
                 "color-box": "",
+                "color-btn": "",
+                "color-btn2": "",
                 // Color Modo dark
                 "color-dark": "",
                 "color-txt-dark": "",
+                "color-box-dark": "",
+                "color-btn-dark": "",
                 "color-btn2-dark": "",
-                // Class name: `.btn-primary`
-                primary: {
-                    background: colors["blue"],
-                    text: colors["white"],
-                },
-                // Class name: `.btn-secondary`
-                secondary: {
-                    background: colors["grey"],
-                    text: colors["black"],
-                },
             },
             spacing: {
                 // Padding main
                 "pdd-desk": "112px",
                 "pdd-tablet": "30px",
                 "pdd-mobile": "18px",
-                title: {
-                    text: colors[""],
-                    fontSize: "1rem",
-                },
             },
-            subtitle: {},
+            fontSize: {
+                "title-banner": "3rem", // 48px
+                "title": "3rem", // 48px
+                "sub-title": "2.25rem", // 36px
+                "texto":"",
+                "parrafo": "1rem", // 16px
+            },
         },
     },
 
