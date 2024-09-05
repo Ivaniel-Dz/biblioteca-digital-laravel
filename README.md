@@ -80,9 +80,9 @@ php artisan migrate
 php artisan migrate
 ```
 
-- Crear Seeders
+- Crear Ejecutar Seeder de Users
 ```bash
-php artisan make:seeder UserSeeder
+php artisan db:seed --class=UserSeeder
 ```
 
 ## Documentación del proyecto
@@ -144,3 +144,6 @@ Tablas de la BD del Proyecto
 
 18. **`historico_devoluciones`** (opcional, si deseas mantener un histórico detallado de devoluciones)
     - Almacena el histórico de devoluciones de libros a lo largo del tiempo.
+
+## Uso del API
+https://openlibrary.org/developers/api

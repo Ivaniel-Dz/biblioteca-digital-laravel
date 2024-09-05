@@ -1,7 +1,8 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import Header from './LandingPage/Layouts/Header.vue';
-import Home from './LandingPage/Home.vue'
+import Home from './LandingPage/Home.vue';
+import Books from  './LandingPage/Books.vue';
 
 defineProps({
     canLogin: {
@@ -20,5 +21,6 @@ defineProps({
         <Header :login="canLogin"
                 :register="canRegister"/>
         <Home/>
+        <Books/>
     </div>
 </template>
