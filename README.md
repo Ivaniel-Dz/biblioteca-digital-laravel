@@ -75,3 +75,72 @@ php artisan migrate
 ```
 
 ## Ejecutar el proyecto
+- Crea y actualiza las tablas en la BD
+```bash
+php artisan migrate
+```
+
+- Crear Seeders
+```bash
+php artisan make:seeder UserSeeder
+```
+
+## Documentación del proyecto
+
+Tablas de la BD del Proyecto
+
+1. **`usuarios`**
+   - Almacena la información de los usuarios de la biblioteca.
+
+2. **`libros`**
+   - Almacena la información de los libros disponibles en la biblioteca.
+
+3. **`prestamos`**
+   - Registra los préstamos de libros a los usuarios, incluyendo fechas de préstamo y devolución.
+
+4. **`reservas`**
+   - Registra las reservas de libros realizadas por los usuarios.
+
+5. **`devoluciones`**
+   - Registra la información sobre la devolución de libros prestados.
+
+6. **`historial_usuarios`**
+   - Registra el historial de acciones realizadas por los usuarios, como préstamos, devoluciones, reservas, y más.
+
+7. **`multas`**
+   - Registra las multas asociadas a los préstamos de libros, incluyendo monto y estado de pago.
+
+8. **`actividades_usuario_libros`**
+   - Registra las actividades relacionadas con los libros realizadas por los usuarios, incluyendo préstamos, reservas y devoluciones.
+
+9. **`estadisticas_uso_libros`**
+   - Almacena estadísticas sobre el uso de cada libro, incluyendo cantidad de préstamos, reservas y devoluciones.
+
+10. **`autores`** (opcional, dependiendo si decides gestionar autores de forma separada)
+    - Almacena la información de los autores de los libros.
+
+11. **`categorias`** (opcional, dependiendo si decides gestionar categorías de libros)
+    - Almacena categorías o géneros de los libros.
+
+    <!-- Tablas No usadas pero se puede Implementar a Futuras Mejoras -->
+
+12. **`editoriales`** (opcional, dependiendo si decides gestionar editoriales de forma separada)
+    - Almacena la información de las editoriales de los libros.
+
+13. **`ejemplares`** (opcional, si necesitas gestionar múltiples ejemplares del mismo libro)
+    - Registra información sobre los ejemplares específicos de cada libro.
+
+14. **`sucursales`** (opcional, si decides gestionar diferentes sucursales de la biblioteca)
+    - Almacena información sobre las sucursales de la biblioteca.
+
+15. **`tipos_multas`** (opcional, si quieres categorizar las multas)
+    - Almacena diferentes tipos de multas que pueden aplicarse.
+
+16. **`historico_prestamos`** (opcional, si deseas mantener un histórico detallado de préstamos)
+    - Almacena el histórico de préstamos de libros a lo largo del tiempo.
+
+17. **`historico_reservas`** (opcional, si deseas mantener un histórico detallado de reservas)
+    - Almacena el histórico de reservas de libros a lo largo del tiempo.
+
+18. **`historico_devoluciones`** (opcional, si deseas mantener un histórico detallado de devoluciones)
+    - Almacena el histórico de devoluciones de libros a lo largo del tiempo.
