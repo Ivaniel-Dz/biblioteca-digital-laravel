@@ -1,52 +1,59 @@
 <template>
   <div>
-    <h1>Libros</h1>
-    <div v-if="errorMessage">{{ errorMessage }}</div>
-    <ul v-else>
-      <li v-for="book in books" :key="book.id">
-        <strong>{{ book.volumeInfo.title }}</strong><br>
-        Autor(es): {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Desconocido' }}<br>
-        Fecha de publicación: {{ book.volumeInfo.publishedDate || 'Desconocida' }}<br>
-        <a :href="book.volumeInfo.infoLink" target="_blank">Más información</a>
-      </li>
-    </ul>
+    <h1>Libros de Open Library</h1>
+
+    <!-- Formulario de búsqueda -->
+    <form @submit.prevent="buscarLibros">
+      <input v-model="localSearchQuery" placeholder="Buscar libros..." />
+      <button type="submit">Buscar</button>
+    </form>
+
+    <div v-if="error">
+      <p>{{ error }}</p>
+    </div>
+    
+    <div v-else>
+      <div v-if="books.length">
+        <ul>
+          <li v-for="book in books" :key="book.isbn">
+            <h2>{{ book.title }}</h2>
+            <p>Autor: {{ book.author }}</p>
+            <p>Año: {{ book.published_year }}</p>
+            <p>ISBN: {{ book.isbn }}</p>
+          </li>
+        </ul>
+      </div>
+      <div v-else>
+        <p>No se encontraron libros para "{{ localSearchQuery }}".</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
-
 export default {
-  name: 'BookList',
-  setup() {
-    const books = ref([]);
-    const errorMessage = ref('');
-
-    const fetchBooks = async () => {
-      try {
-        const response = await axios.get('/api/buscarLibros', {
-          params: {
-            query: 'harry potter', // Puedes hacer que esto sea dinámico si es necesario
-          },
-        });
-        books.value = response.data.items || [];
-      } catch (error) {
-        errorMessage.value = 'No se encontraron libros.';
-        console.error(error);
-      }
-    };
-
-    onMounted(fetchBooks);
-
+  props: {
+    books: Array,
+    error: String,
+    searchQuery: String
+  },
+  data() {
     return {
-      books,
-      errorMessage,
+      localSearchQuery: this.searchQuery
     };
   },
-};
+  watch: {
+    // Escuchar los cambios en searchQuery y actualizar el valor local
+    searchQuery(newValue) {
+      this.localSearchQuery = newValue;
+    }
+  },
+  methods: {
+    buscarLibros() {
+      // Emitir el evento para actualizar el valor en el componente padre
+      this.$emit('update:searchQuery', this.localSearchQuery);
+      this.$inertia.get('/books', { q: this.localSearchQuery });
+    }
+  }
+}
 </script>
-
-<style scoped>
-/* Agrega estilos específicos para este componente aquí */
-</style>

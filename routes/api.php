@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LibroAPIController;
+use App\Http\Controllers\BookApiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,3 @@ use App\Http\Controllers\LibroAPIController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
-
-Route::get('/libros', [LibroAPIController::class, 'mostrarLibros'])->name('libros.books');

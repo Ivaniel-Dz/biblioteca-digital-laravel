@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookApiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -24,8 +25,11 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/books', [BookApiController::class, 'index']);
+// Route::get('/books/search', [BookApiController::class, 'search'])->name('books.search');
+
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard/User/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
