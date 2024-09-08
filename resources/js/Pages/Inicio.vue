@@ -11,6 +11,9 @@ defineProps({
     canRegister: {
         type: Boolean,
     },
+    books: {
+        type: Array
+    },
 });
 </script>
 
@@ -21,6 +24,6 @@ defineProps({
         <Header :login="canLogin"
                 :register="canRegister"/>
         <Home/>
-        <Books/>
+        <Books :libros="books"/>
     </div>
 </template>

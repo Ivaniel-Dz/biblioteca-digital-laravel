@@ -21,12 +21,11 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Inicio', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register')
+        'canRegister' => Route::has('register'),
     ]);
 });
 
-Route::get('/books', [BookApiController::class, 'index']);
-// Route::get('/books/search', [BookApiController::class, 'search'])->name('books.search');
+Route::get('/', [BookApiController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard/User/Dashboard');
