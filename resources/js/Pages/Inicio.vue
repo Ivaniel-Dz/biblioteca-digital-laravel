@@ -2,18 +2,12 @@
 import { Head } from '@inertiajs/vue3';
 import Header from './LandingPage/Layouts/Header.vue';
 import Home from './LandingPage/Home.vue';
-import Books from  './LandingPage/Books.vue';
+import Books from './LandingPage/Books.vue';
 
 defineProps({
-    canLogin: {
-        type: Boolean,
-    },
-    canRegister: {
-        type: Boolean,
-    },
-    books: {
-        type: Array
-    },
+    canLogin: Boolean,
+    canRegister: Boolean,
+    books: Array,
 });
 </script>
 
@@ -21,9 +15,9 @@ defineProps({
     <Head title="Inicio -"/>
 
     <div>
-        <Header :login="canLogin"
-                :register="canRegister"/>
-        <Home/>
-        <Books :libros="books"/>
+        <Header :login="canLogin" :register="canRegister" />
+        <Home />
+        <Books :libros="books" />
     </div>
 </template>
+

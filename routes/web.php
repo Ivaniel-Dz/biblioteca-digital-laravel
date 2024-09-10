@@ -19,13 +19,23 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Inicio', [
+    // Datos de canLogin y canRegister
+    $loginData = [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-    ]);
+    ];
+
+    // Llamada al controlador de libros
+    $bookController = new BookApiController();
+    $apiResponse = $bookController->index();
+
+    // Convertir la respuesta a array
+    $apiData = json_decode(json_encode($apiResponse->getData()), true);
+
+    // Fusionar ambas respuestas
+    return Inertia::render('Inicio', array_merge($loginData, $apiData));
 });
 
-Route::get('/', [BookApiController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard/User/Dashboard');
