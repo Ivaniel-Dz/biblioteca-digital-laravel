@@ -9,7 +9,7 @@ export default {
         "./resources/views/**/*.blade.php",
         "./resources/js/**/*.vue",
     ],
-
+    darkMode: "class",
     theme: {
         extend: {
             fontFamily: {
@@ -17,13 +17,13 @@ export default {
             },
             colors: {
                 // Color Principal
-                "color-main": "",
+                "color-main": "#F9F9F7",
                 "color-txt": "",
                 "color-box": "",
                 "color-btn": "",
                 "color-btn2": "",
                 // Color Modo dark
-                "color-dark": "",
+                "color-dark": "#121521",
                 "color-txt-dark": "",
                 "color-box-dark": "",
                 "color-btn-dark": "",
@@ -37,10 +37,10 @@ export default {
             },
             fontSize: {
                 "title-banner": "3rem", // 48px
-                "title": "3rem", // 48px
+                title: "3rem", // 48px
                 "sub-title": "2.25rem", // 36px
-                "texto":"",
-                "parrafo": "1rem", // 16px
+                texto: "",
+                parrafo: "1rem", // 16px
             },
         },
     },

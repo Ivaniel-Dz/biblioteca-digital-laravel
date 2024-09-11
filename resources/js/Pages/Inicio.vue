@@ -14,7 +14,7 @@ defineProps({
 <template>
     <Head title="Inicio -"/>
 
-    <div>
+    <div class="bg-color-main dark:bg-color-dark">
         <Header :login="canLogin" :register="canRegister" />
         <Home />
         <Books :libros="books" />
