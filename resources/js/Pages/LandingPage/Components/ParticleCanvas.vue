@@ -48,8 +48,7 @@ class Particle {
   }
 
   draw() {
-    // ctx.fillStyle = `rgba(${255 - (Math.random() * 255 / 2)}, 255, 255, ${this.opacity})`;
-    ctx.fillStyle = `rgba(0, 0, 0, ${this.opacity}`;
+    ctx.fillStyle = `rgba(${255 - (Math.random() * 255 / 2)}, 255, 255, ${this.opacity})`;
     ctx.fillRect(this.x, this.y, 0.4, Math.random() * 2 + 1);
   }
 }

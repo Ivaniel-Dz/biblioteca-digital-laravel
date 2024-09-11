@@ -24,7 +24,7 @@ function toggleMenu() {
 </script>
 
 <template>
-    <header class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+    <header class="w-full flex md:fixed h-16 items-center gap-8 bg-color-main dark:bg-color-dark">
         <!-- Logo -->
         <a class="block text-color-txt" href="#">
             <span class="sr-only">Home</span>
