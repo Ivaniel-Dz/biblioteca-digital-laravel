@@ -4,32 +4,32 @@ import { Link } from '@inertiajs/vue3';
 import DarkIcon from '../Components/DarkIcon.vue';
 import MenuLink from '../Components/MenuLink.vue';
 
-    // Instancia los objetos
-    defineProps({
-        login: {
+// Instancia los objetos
+defineProps({
+    login: {
         type: Boolean,
-        },
-        register: {
+    },
+    register: {
         type: Boolean,
-        },
-    });
+    },
+});
 
-    // Open/close Menu Mobile
-    const isMenuOpen = ref(false);
+// Open/close Menu Mobile
+const isMenuOpen = ref(false);
 
-    function toggleMenu() {
+function toggleMenu() {
     isMenuOpen.value = !isMenuOpen.value;
-    }
+}
 
 </script>
 
 <template>
     <header class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         <!-- Logo -->
-        <a class="block text-teal-600" href="#">
+        <a class="block text-color-txt" href="#">
             <span class="sr-only">Home</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-books" width="44" height="44"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round"
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-books stroke-color-txt dark:stroke-color-txt-dark" width="44" height="44"
+                viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round"
                 stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M5 4m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z" />
@@ -45,45 +45,44 @@ import MenuLink from '../Components/MenuLink.vue';
 
         <div class="flex flex-1 items-center justify-end md:justify-between">
             <!-- Links Navegations -->
-             <MenuLink :menuOpen="isMenuOpen"/>
+            <MenuLink :menuOpen="isMenuOpen" />
 
-            <!-- Icon Dark/Light -->
-            <DarkIcon class="text-left" />
-
-            <!-- Login Dashboard -->
+            <!-- Buttons Nav -->
             <div class="flex items-center gap-4">
-                <!-- Login & Register -->
+                <!-- Icon Dark/Light -->
+                <DarkIcon />
+
+                <!-- Login & Register Dashboard -->
                 <div v-if="login" class="sm:flex sm:gap-4">
                     <!-- Boton de Login con sección iniciada -->
                     <Link v-if="$page.props.auth.user" :href="route('dashboard')"
-                        class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700">
-                        Login
+                        class="block rounded-md bg-color-btn px-5 py-2.5 text-sm font-medium text-white transition hover:bg-color-btn/75">
+                    Login
                     </Link>
 
                     <!-- Boton de Login & Register sin iniciar -->
                     <div v-else class="sm:flex sm:gap-4">
                         <Link :href="route('login')"
-                            class="block rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700">
-                            Login
+                            class="block rounded-md bg-color-btn px-5 py-2.5 text-sm font-medium text-white transition hover:bg-color-btn/75">
+                        Login
                         </Link>
 
                         <Link v-if="register" :href="route('register')"
-                            class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block">
+                            class="hidden rounded-md bg-color-btn-sc px-5 py-2.5 text-sm font-medium text-color-txt transition hover:text-color-txt/75 sm:block">
                             Register
                         </Link>
                     </div>
                 </div>
 
-                <!-- Icon Hamburger -->
+                <!-- Hamburger Icon for mobile -->
                 <button @click="toggleMenu"
-                    class="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
+                    class="block rounded bg-color-main dark:bg-color-dark p-2.5 text-color-txt dark:text-color-txt-dark transition hover:text-color-txt/60 dark:hover:text-color-txt-dark/60 md:hidden">
                     <span class="sr-only">Toggle menu</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-                
             </div>
         </div>
     </header>

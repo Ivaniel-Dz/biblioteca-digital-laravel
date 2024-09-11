@@ -14,7 +14,7 @@ function toggleTheme() {
   <!-- Botón switch dark/light-->
       <button
         @click="toggleTheme"
-        class="h-8 w-8 flex justify-center items-center rounded-md dark:text-color-text-dark text-color-text hover:bg-gray-300 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white wobble-hor-bottom"
+        class="h-8 w-8 flex justify-center items-center rounded-md dark:text-color-txt-dark text-color-txt hover:bg-gray-300 dark:hover:bg-gray-800 hover:text-gray-800 dark:hover:text-white wobble-hor-bottom"
       >
         <!-- btn dark -->
         <svg

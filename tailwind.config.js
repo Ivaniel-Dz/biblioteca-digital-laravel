@@ -18,16 +18,16 @@ export default {
             colors: {
                 // Color Principal
                 "color-main": "#F9F9F7",
-                "color-txt": "",
+                "color-txt": "#2f4858",
                 "color-box": "",
-                "color-btn": "",
-                "color-btn2": "",
+                "color-btn": "#2f4858",
+                "color-btn-sc": "#cfd3cd",
                 // Color Modo dark
                 "color-dark": "#121521",
-                "color-txt-dark": "",
+                "color-txt-dark": "#F9F9F7",
                 "color-box-dark": "",
                 "color-btn-dark": "",
-                "color-btn2-dark": "",
+                "color-btnsc-dark": "",
             },
             spacing: {
                 // Padding main
