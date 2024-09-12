@@ -1,5 +1,5 @@
 <script setup>
-import { LaFacebookF, LaLinkedinIn, LaInstagram, LaTwitter } from "oh-vue-icons/icons";
+import { LaFacebookF, LaInstagram, LaTwitter ,LaLinkedinIn } from '@kalimahapps/vue-icons';
 
 </script>
 
@@ -9,12 +9,16 @@ import { LaFacebookF, LaLinkedinIn, LaInstagram, LaTwitter } from "oh-vue-icons/
             Reserved.</p>
         <div class="flex items-center space-x-6">
             <a href="#">
+               <LaFacebookF class="dark:fill-color-txt-dark fill-color-btn" />
             </a>
             <a href="#">
+                <LaInstagram class="dark:fill-color-txt-dark fill-color-btn" />
             </a>
             <a href="#">
+                <LaTwitter class="dark:fill-color-txt-dark fill-color-btn" />
             </a>
             <a href="#">
+                <LaLinkedinIn class="dark:fill-color-txt-dark fill-color-btn" />
             </a>
         </div>
     </footer>

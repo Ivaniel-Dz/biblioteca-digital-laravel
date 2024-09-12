@@ -75,9 +75,9 @@ php artisan migrate
 ```
 
 ## Paquetes extras
-- Oh, Vue Icons!
+- Vue Icons - Kalimahapps
 ```bash
-npm install oh-vue-icons
+npm install @kalimahapps/vue-icons
 ```
 
 ## Ejecutar el proyecto
