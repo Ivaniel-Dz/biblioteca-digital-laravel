@@ -74,6 +74,12 @@ DB_PASSWORD=tu_contraseña
 php artisan migrate
 ```
 
+## Paquetes extras
+- Oh, Vue Icons!
+```bash
+npm install oh-vue-icons
+```
+
 ## Ejecutar el proyecto
 - Crea y actualiza las tablas en la BD
 ```bash

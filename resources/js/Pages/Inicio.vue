@@ -4,6 +4,7 @@ import Header from './LandingPage/Layouts/Header.vue';
 import Home from './LandingPage/Home.vue';
 import Books from './LandingPage/Books.vue';
 import ParticleCanvas from './LandingPage/Components/ParticleCanvas.vue';
+import Footer from './LandingPage/Layouts/Footer.vue';
 
 defineProps({
     canLogin: Boolean,
@@ -20,6 +21,7 @@ defineProps({
         <Header :login="canLogin" :register="canRegister" />
         <Home />
         <Books :libros="books" />
+        <Footer/>
     </div>
 </template>
 
