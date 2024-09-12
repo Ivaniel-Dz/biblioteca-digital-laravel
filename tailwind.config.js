@@ -31,16 +31,16 @@ export default {
             },
             spacing: {
                 // Padding main
-                "pdd-desk": "112px",
-                "pdd-tablet": "30px",
-                "pdd-mobile": "18px",
+                "pdg-desk": "112px",
+                "pdg-tablet": "30px",
+                "pdg-mobile": "18px",
             },
             fontSize: {
                 "title-banner": "3rem", // 48px
-                title: "3rem", // 48px
+                "title": "3rem", // 48px
                 "sub-title": "2.25rem", // 36px
-                texto: "",
-                parrafo: "1rem", // 16px
+                "texto": "",
+                "parrafo": "1rem", // 16px
             },
         },
     },
