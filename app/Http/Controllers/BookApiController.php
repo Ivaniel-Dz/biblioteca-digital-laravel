@@ -48,4 +48,28 @@ class BookApiController extends Controller {
         ]);
     }
 
+    // Obtiene libro seleccionado por id
+    public function view($name) {
+
+        $response = Http::get("https://openlibrary.org/subjects/{$name}.json");
+        $books = $response->json()['works'];
+
+         // Procesar los libros para incluir la portada
+        $books = collect($books)->map(function ($book) {
+            // Construir la URL de la portada, si existe
+            if (isset($book['cover_id'])) {
+                $book['cover_image'] = 'https://covers.openlibrary.org/b/id/' . $book['cover_id'] . '-L.jpg';
+            } else {
+                // Si no tiene portada, usar una imagen personalizada
+                $book['cover_image'] = asset('images/no-cover.png');
+            }
+
+            return $book;
+        });
+
+        return Inertia::render('LandingPage/Layouts/SubjectView', [
+            'libros' => $books,
+        ]);
+    }
+
 }

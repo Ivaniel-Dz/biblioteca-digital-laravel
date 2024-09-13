@@ -39,6 +39,8 @@ Route::get('/', function () {
 // Redirigir por id a un libro
 Route::get('/libro/{id}', [BookApiController::class, 'show'])->name('book.show');
 
+Route::get('/subjects/{name}', [BookApiController::class, 'view'])->name('book.view');
+
 // Rutas de Dashboard
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard/User/Dashboard');

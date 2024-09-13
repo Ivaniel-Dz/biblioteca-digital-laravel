@@ -14,32 +14,32 @@
                 v-show="isOpen" @click="closeSubMenu">
                 <ul class="space-y-1">
                     <li>
-                        <a href="#"
+                        <Link :href="route('book.view', {name: 'love' })"
                             class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-color-txt-dark"
                             @click.prevent="scrollTo('#teams')">
-                            Teams
-                        </a>
+                            Romantica
+                        </Link>
                     </li>
                     <li>
-                        <a href="#"
+                        <Link :href="route('book.view', {name: 'science_fiction' })"
                             class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-color-txt-dark"
                             @click.prevent="scrollTo('#billing')">
-                            Billing
-                        </a>
+                            Ciencia Fición
+                        </Link>
                     </li>
                     <li>
-                        <a href="#"
+                        <Link :href="route('book.view', {name: 'love' })"
                             class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-color-txt-dark"
                             @click.prevent="scrollTo('#invoices')">
                             Invoices
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a href="#"
+                        <Link :href="route('book.view', {name: 'love' })"
                             class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-color-txt-dark"
                             @click.prevent="scrollTo('#account')">
                             Account
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -49,6 +49,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import { Link } from '@inertiajs/inertia-vue3';
 
 const isOpen = ref(false);
 
