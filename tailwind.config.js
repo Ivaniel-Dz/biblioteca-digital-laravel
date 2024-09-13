@@ -21,7 +21,7 @@ export default {
                 "color-txt": "#2f4858",
                 "color-box": "",
                 "color-btn": "#2f4858",
-                "color-btn-sc": "#cfd3cd",
+                "color-btn-sc": "rgb(234 179 8)",
                 // Color Modo dark
                 "color-dark": "#121521",
                 "color-txt-dark": "#F9F9F7",
@@ -37,10 +37,10 @@ export default {
             },
             fontSize: {
                 "title-banner": "3rem", // 48px
-                "title": "3rem", // 48px
+                title: "3rem", // 48px
                 "sub-title": "2.25rem", // 36px
-                "texto": "",
-                "parrafo": "1rem", // 16px
+                texto: "",
+                parrafo: "1rem", // 16px
             },
         },
     },

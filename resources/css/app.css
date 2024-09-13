@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Desplazamiendo sueva a otros componentes */
+html {
+    scroll-behavior: smooth;
+}

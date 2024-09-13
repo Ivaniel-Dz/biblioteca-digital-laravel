@@ -7,27 +7,23 @@ import Spotlight from "./Components/Spotlight.vue";
 
     <Head title="Inicio -" />
 
-    <div class="h-screen">
-        <!-- Text Intro -->
-        <article class="text-color-txt-dark/85 absolute inset-0 flex flex-col justify-center items-center text-center px-pdg-mobile text-focus-in">
-            <h1 class="text-title-banner font-bold">
-                Bienvenido a <br />
-                Biblioteca Digital Lothlorien
-            </h1>
-            <p class="text-xl pt-4 md:w-[600px] lg:w-[700px]">
-                La lectura imperativa es un hechizo que desvela misterios y guía
-                tu mente a través de mundos de conocimiento. Sumérgete en textos
-                que transforman el saber en poder y despiertan la magia del
-                aprendizaje.
+    <!-- Hero Banner -->
+    <section class="relative bg-cover bg-center h-screen text-white"
+        style="background-image: url('images/banner.webp');">
+        <Spotlight />
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="relative z-1 flex flex-col items-center justify-center h-full text-center">
+            <h1 class="text-5xl font-bold text-focus-in">Bienvenido a la Biblioteca Lothlorien</h1>
+            <p class="mt-4 text-xl leading-relaxed max-w-lg text-focus-in">
+                Sumérgete en el maravilloso mundo de la lectura imperativa y descubre miles de libros que esperan por
+                ti.
             </p>
-        </article>
+            <a href="#books"
+                class="mt-8 bg-yellow-500 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition">Explorar
+                Libros</a>
+        </div>
+    </section>
 
-        <!-- Banner/Spotlight -->
-        <picture>
-            <Spotlight />
-            <img src="images/banner.webp" alt="banner" class="w-full h-full object-cover" />
-        </picture>
-    </div>
 </template>
 
 <style scoped>

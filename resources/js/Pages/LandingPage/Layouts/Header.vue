@@ -2,7 +2,8 @@
 import { ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import DarkIcon from '../Components/DarkIcon.vue';
-import MenuLink from '../Components/MenuLink.vue';
+import NavLink from '../Components/NavLink.vue';
+import SearchButton from '../Components/SearchButton.vue'
 
 // Instancia los objetos
 defineProps({
@@ -45,7 +46,10 @@ function toggleMenu() {
 
         <div class="flex flex-1 items-center justify-end md:justify-between">
             <!-- Links Navegations -->
-            <MenuLink :menuOpen="isMenuOpen" />
+            <NavLink :menuOpen="isMenuOpen" />
+
+            <!-- Button Search -->
+            <SearchButton/>
 
             <!-- Buttons Nav -->
             <div class="flex items-center gap-4">
@@ -68,7 +72,7 @@ function toggleMenu() {
                         </Link>
 
                         <Link v-if="register" :href="route('register')"
-                            class="hidden rounded-md bg-color-btn-sc px-5 py-2.5 text-sm font-medium text-color-txt transition hover:text-color-txt/75 sm:block">
+                            class="hidden rounded-md bg-color-btn-sc px-5 py-2.5 text-sm font-medium text-black transition hover:text-color-txt/75 sm:block">
                             Register
                         </Link>
                     </div>
