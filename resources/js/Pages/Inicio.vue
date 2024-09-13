@@ -28,4 +28,3 @@ defineProps({
         <Footer/>
     </div>
 </template>
-
