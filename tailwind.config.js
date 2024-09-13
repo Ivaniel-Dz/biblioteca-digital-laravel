@@ -26,8 +26,6 @@ export default {
                 "color-dark": "#121521",
                 "color-txt-dark": "#F9F9F7",
                 "color-box-dark": "",
-                "color-btn-dark": "",
-                "color-btnsc-dark": "",
             },
             spacing: {
                 // Padding main

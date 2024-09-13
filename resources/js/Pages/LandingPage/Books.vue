@@ -1,6 +1,6 @@
 <template>
   <div id="books" class="text-color-txt dark:text-color-txt-dark pt-8 px-pdg-mobile md:px-pdg-tablet">
-    <h1 class="text-2xl font-bold mb-4">Libros Populares </h1>
+    <h2 class="text-3xl font-bold text-center mb-8">Libros Populares </h2>
     <ul v-if="libros.length" class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:gap-6 lg:grid-cols-8 text-sm">
       <li v-for="(libro, index) in libros" :key="index" class="rounded-lg">
         <picture>
