@@ -3,11 +3,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Inertia\Inertia;
 
-class BookApiController extends Controller
-{
-    public function index()
-    {
+class BookApiController extends Controller {
+
+    public function index() {
         // Obtener los libros desde la API
         $response = Http::get('https://openlibrary.org/subjects/science_fiction.json?limit=16');
         $books = $response->json()['works'];
@@ -30,4 +30,22 @@ class BookApiController extends Controller
             'books' => $books,
         ]);
     }
+
+// Obtiene libro seleccionado por id
+    public function show($id) {
+        // Asegúrate de eliminar el prefijo '/works/' si está presente
+        $id = str_replace('/works/', '', $id);
+
+        $response = Http::get("https://openlibrary.org/works/{$id}.json");
+        $book = $response->json();
+
+        if (!$book) {
+            abort(404, 'Libro no encontrado');
+        }
+
+        return Inertia::render('LandingPage/Layouts/SelectedBook', [
+            'book' => $book
+        ]);
+    }
+
 }

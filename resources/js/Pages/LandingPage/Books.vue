@@ -1,5 +1,6 @@
 <script setup>
 import { LaExternalLinkAltSolid } from '@kalimahapps/vue-icons';
+import { Link } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
   libros: Array
@@ -17,9 +18,9 @@ const props = defineProps({
               <img :src="libro.cover_image" alt="Portada del libro" class="w-36 h-44" />
             </picture>
             <div class="icon">
-              <a href="#" class="iconBox">
+              <Link :href="route('book.show', { id: libro.key.replace('/works/', '') })" class="iconBox">
                 <LaExternalLinkAltSolid class="text-2xl"/>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
