@@ -40,7 +40,7 @@ Route::get('/', function () {
 Route::get('/subjects/{genre}', [BookApiController::class, 'view'])->name('book.view');
 
 // Redirigir a un libro por id
-Route::get('/subjects/book/{id}', [BookApiController::class, 'show'])->name('book.show');
+Route::get('/book/{id}', [BookApiController::class, 'show'])->name('book.show');
 
 
 // Rutas de Dashboard

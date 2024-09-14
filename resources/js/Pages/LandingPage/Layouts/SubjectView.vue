@@ -3,13 +3,15 @@ import { LaExternalLinkAltSolid } from '@kalimahapps/vue-icons';
 import { Link } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
-  libros: Array
+  libros: Array,
+  title: Object,
 });
+
 </script>
 
 <template>
   <div id="books" class="text-color-txt dark:text-color-txt-dark pt-16 px-pdg-mobile md:px-pdg-tablet">
-    <h2 class="text-3xl font-bold text-center mb-8"> Libros Populares </h2>
+    <h2 class="text-3xl font-bold text-center mb-8"> Libros de {{ title }} </h2>
     <ul v-if="libros.length" class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:gap-6 lg:grid-cols-8 text-sm main-card">
       <li v-for="(book, index) in libros" :key="index" class="rounded-lg card">
         <div class="card-inner">

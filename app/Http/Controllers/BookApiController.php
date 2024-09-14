@@ -9,7 +9,9 @@ class BookApiController extends Controller {
 
     public function index() {
         // Obtener los libros desde la API
-        $response = Http::get('https://openlibrary.org/subjects/programming.json?limit=16');
+        $genre = "science";
+
+        $response = Http::get("https://openlibrary.org/subjects/{$genre}.json?limit=16");
         $books = $response->json()['works'];
 
         // Procesar los libros para incluir la portada
@@ -31,22 +33,6 @@ class BookApiController extends Controller {
         ]);
     }
 
-// Obtiene libro seleccionado por id
-    public function show($id) {
-        // Asegúrate de eliminar el prefijo '/works/' si está presente
-        $id = str_replace('/works/', '', $id);
-
-        $response = Http::get("https://openlibrary.org/works/{$id}.json");
-        $book = $response->json();
-
-        if (!$book) {
-            abort(404, 'Libro no encontrado');
-        }
-
-        return Inertia::render('LandingPage/Layouts/SelectedBook', [
-            'book' => $book
-        ]);
-    }
 
     // Obtiene libro seleccionado por genero
     public function view($genre) {
@@ -69,7 +55,25 @@ class BookApiController extends Controller {
 
         return Inertia::render('LandingPage/Layouts/SubjectView', [
             'libros' => $books,
+            'title' => $genre,
         ]);
     }
 
+    // Obtiene libro seleccionado por id
+    public function show($id) {
+        // Asegúrate de eliminar el prefijo '/works/' si está presente
+        $id = str_replace('/works/', '', $id);
+
+        $response = Http::get("https://openlibrary.org/works/{$id}.json");
+        $book = $response->json();
+
+        if (!$book) {
+            abort(404, 'Libro no encontrado');
+        }
+
+        return Inertia::render('LandingPage/Layouts/SelectedBook', [
+            'book' => $book
+        ]);
+    }
+    
 }
