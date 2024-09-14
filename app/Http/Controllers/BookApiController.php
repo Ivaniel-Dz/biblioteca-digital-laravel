@@ -9,7 +9,7 @@ class BookApiController extends Controller {
 
     public function index() {
         // Obtener los libros desde la API
-        $response = Http::get('https://openlibrary.org/subjects/science_fiction.json?limit=16');
+        $response = Http::get('https://openlibrary.org/subjects/programming.json?limit=16');
         $books = $response->json()['works'];
 
         // Procesar los libros para incluir la portada
@@ -48,10 +48,10 @@ class BookApiController extends Controller {
         ]);
     }
 
-    // Obtiene libro seleccionado por id
-    public function view($name) {
+    // Obtiene libro seleccionado por genero
+    public function view($genre) {
 
-        $response = Http::get("https://openlibrary.org/subjects/{$name}.json");
+        $response = Http::get("https://openlibrary.org/subjects/{$genre}.json");
         $books = $response->json()['works'];
 
          // Procesar los libros para incluir la portada

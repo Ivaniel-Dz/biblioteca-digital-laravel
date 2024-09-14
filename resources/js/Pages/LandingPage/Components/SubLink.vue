@@ -13,32 +13,11 @@
             <div class="absolute top-0 z-50 w-screen max-w-md p-2 mx-0 my-12 text-sm text-color-txt transform bg-color-main dark:bg-color-dark rounded shadow lg:left-1/2 lg:-translate-x-1/2"
                 v-show="isOpen" @click="closeSubMenu">
                 <ul class="space-y-1">
-                    <li>
-                        <Link :href="route('book.view', {name: 'love' })"
+                    <li v-for="subject in generos" :key="subject.subject">
+                        <Link :href="route('book.view', {genre: subject.name })"
                             class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-color-txt-dark"
                             @click.prevent="scrollTo('#teams')">
-                            Romantica
-                        </Link>
-                    </li>
-                    <li>
-                        <Link :href="route('book.view', {name: 'science_fiction' })"
-                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-color-txt-dark"
-                            @click.prevent="scrollTo('#billing')">
-                            Ciencia Fición
-                        </Link>
-                    </li>
-                    <li>
-                        <Link :href="route('book.view', {name: 'love' })"
-                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-color-txt-dark"
-                            @click.prevent="scrollTo('#invoices')">
-                            Invoices
-                        </Link>
-                    </li>
-                    <li>
-                        <Link :href="route('book.view', {name: 'love' })"
-                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-300 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-color-txt-dark"
-                            @click.prevent="scrollTo('#account')">
-                            Account
+                            {{ subject.title }}
                         </Link>
                     </li>
                 </ul>
@@ -64,6 +43,30 @@ const closeSubMenu = () => {
 const scrollTo = (selector) => {
     document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
 };
+
+// Generos
+const generos = [
+    {   
+        title: "Ciencia Ficción",
+        name: "science_fiction"
+    },
+    {   
+        title: "Fantasía",
+        name: "fantasy"},
+    {   
+        title: "Romance",
+        name: "romance"
+    },
+    {   
+        title: "Terror",
+        name: "horror"
+    },
+    {   
+        title: "Aventura",
+        name: "adventure"
+    },
+];
+
 </script>
 
 <style scoped>

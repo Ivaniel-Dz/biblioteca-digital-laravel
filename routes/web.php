@@ -36,10 +36,12 @@ Route::get('/', function () {
     return Inertia::render('Inicio', array_merge($loginData, $apiData));
 });
 
-// Redirigir por id a un libro
-Route::get('/libro/{id}', [BookApiController::class, 'show'])->name('book.show');
+// Redirige a los libros por genero
+Route::get('/subjects/{genre}', [BookApiController::class, 'view'])->name('book.view');
 
-Route::get('/subjects/{name}', [BookApiController::class, 'view'])->name('book.view');
+// Redirigir a un libro por id
+Route::get('/subjects/book/{id}', [BookApiController::class, 'show'])->name('book.show');
+
 
 // Rutas de Dashboard
 Route::get('/dashboard', function () {

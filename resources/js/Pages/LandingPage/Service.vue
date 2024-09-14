@@ -28,11 +28,11 @@
             title: "Consulta Bibliográfica",
             description: "Ofrecemos asistencia personalizada para encontrar libros y recursos que se ajusten a tus necesidades."
         },
-                {
+        {
             title: "Club de Lectura",
             description: "Únete a nuestros clubes de lectura para discutir tus libros favoritos con otros entusiastas."
         },
-                {
+        {
             title: "Eventos y Talleres",
             description: "Participa en nuestros eventos y talleres educativos para mejorar tus habilidades de lectura y escritura."
         },
