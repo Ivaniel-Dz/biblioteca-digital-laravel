@@ -59,6 +59,7 @@ class BookApiController extends Controller {
         ]);
     }
 
+    
     // Obtiene libro seleccionado por id
     public function show($id) {
         // Asegúrate de eliminar el prefijo '/works/' si está presente
@@ -75,5 +76,5 @@ class BookApiController extends Controller {
             'book' => $book
         ]);
     }
-    
+
 }
