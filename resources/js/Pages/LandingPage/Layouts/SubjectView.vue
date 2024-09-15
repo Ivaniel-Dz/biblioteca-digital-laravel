@@ -1,6 +1,8 @@
 <script setup>
 import { LaExternalLinkAltSolid } from '@kalimahapps/vue-icons';
 import { Link } from '@inertiajs/inertia-vue3';
+import Header from './Header.vue';
+import Footer from './Footer.vue';
 
 const props = defineProps({
   libros: Array,
@@ -10,7 +12,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div id="books" class="text-color-txt dark:text-color-txt-dark pt-16 px-pdg-mobile md:px-pdg-tablet">
+  <Header />
+  <div id="books" class="dark:bg-color-dark bg-color-main text-color-txt dark:text-color-txt-dark pt-16 px-pdg-mobile md:px-pdg-tablet">
     <h2 class="text-3xl font-bold text-center mb-8"> Libros de {{ title }} </h2>
     <ul v-if="libros.length" class="grid grid-cols-2 gap-2 md:grid-cols-4 lg:gap-6 lg:grid-cols-8 text-sm main-card">
       <li v-for="(book, index) in libros" :key="index" class="rounded-lg card">
@@ -21,7 +24,7 @@ const props = defineProps({
             </picture>
             <div class="icon">
               <Link :href="route('book.show', { id: book.key.replace('/works/', '') })" class="iconBox">
-                <LaExternalLinkAltSolid class="text-2xl"/>
+              <LaExternalLinkAltSolid class="text-2xl dark:fill-black" />
               </Link>
             </div>
           </div>
@@ -35,7 +38,7 @@ const props = defineProps({
     </ul>
     <p v-else>No hay libros disponibles</p>
   </div>
-
+  <Footer />
 </template>
 
 <style scoped>
@@ -53,8 +56,10 @@ const props = defineProps({
   position: absolute;
   bottom: -0.375rem;
   right: -0.375rem;
-  width: 3rem; /* Tamaño icon */
-  height: 3rem; /* Tamaño icon */
+  width: 3rem;
+  /* Tamaño icon */
+  height: 3rem;
+  /* Tamaño icon */
   background: rgb(234 179 8);
   border-top-left-radius: 50%;
 }
