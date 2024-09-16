@@ -42,6 +42,8 @@ Route::get('/subjects/{genre}', [BookApiController::class, 'view'])->name('book.
 // Redirigir a un libro por id
 Route::get('/book/{id}', [BookApiController::class, 'show'])->name('book.show');
 
+// Ruta para realizar la búsqueda de libros
+Route::get('/search', [BookApiController::class, 'search'])->name('book.search');
 
 // Rutas de Dashboard
 Route::get('/dashboard', function () {

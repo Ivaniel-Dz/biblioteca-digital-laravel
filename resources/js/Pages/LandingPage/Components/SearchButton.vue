@@ -1,12 +1,24 @@
+<script setup>
+import { ref } from 'vue';
+import { useForm } from '@inertiajs/inertia-vue3';
+
+const searchQuery = ref('');
+const form = useForm({ query: searchQuery });
+
+const submitSearch = () => {
+  form.get(route('book.search'));
+};
+</script>
+
 <template>
   <div class="relative">
     <label for="Search" class="sr-only"> Search </label>
 
-    <input type="text" id="Search" placeholder="Search for..."
+    <input v-model="searchQuery" type="text" placeholder="Search for..."
       class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm sm:text-sm" />
 
     <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
-      <button type="button" class="text-gray-600 hover:text-gray-700">
+      <button @click="submitSearch" type="button" class="text-gray-600 hover:text-gray-700">
         <span class="sr-only">Search</span>
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"

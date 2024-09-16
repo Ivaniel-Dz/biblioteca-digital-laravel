@@ -77,4 +77,38 @@ class BookApiController extends Controller {
         ]);
     }
 
+    
+    // Busca libros según el término ingresado
+    public function search(Request $request)
+    {
+        // Validamos que el término no esté vacío
+        $request->validate([
+            'query' => 'required|string|min:3',
+        ]);
+
+        $query = $request->input('query');
+        
+        // Consulta a la API de Open Library para buscar libros
+        $response = Http::get("https://openlibrary.org/search.json", [
+            'q' => $query
+        ]);
+        
+        $books = $response->json()['docs'];
+
+        $books = collect($books)->map(function ($book) {
+            if (isset($book['cover_i'])) {
+                $book['cover_image'] = 'https://covers.openlibrary.org/b/id/' . $book['cover_i'] . '-L.jpg';
+            } else {
+                $book['cover_image'] = asset('images/no-cover.png');
+            }
+
+            return $book;
+        });
+
+        return Inertia::render('LandingPage/Layouts/SearchResults', [
+            'books' => $books,
+            'query' => $query,
+        ]);
+    }
+
 }
