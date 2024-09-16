@@ -1,5 +1,8 @@
 <script setup>
 import { AkHeart, BsBookmarkPlus } from '@kalimahapps/vue-icons';
+import PrimaryButton from '../Components/PrimaryButton.vue';
+import SecondaryButton from '../Components/SecondaryButton.vue';
+import IconButton from '../Components/IconButton.vue';
 import Header from './Header.vue';
 import Footer from './Footer.vue';
 
@@ -45,11 +48,12 @@ const props = defineProps({
       </dl>
     </div>
 
-    <!-- Button -->
-    <div class="flex px-10 md:py-3">
-      <button class="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
-      <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"> <BsBookmarkPlus/></button>
-      <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4"> <AkHeart/></button>
+    <!-- Botones -->
+    <div class="flex px-10 md:py-3 gap-4">
+      <PrimaryButton :href="route('prestamos.create', { id: book.key.replace('/works/', '') })" > Prestamo </PrimaryButton>
+      <SecondaryButton> Reservar </SecondaryButton>
+      <IconButton> <BsBookmarkPlus/> </IconButton>
+      <IconButton> <AkHeart/> </IconButton>
     </div>
 
   </section>

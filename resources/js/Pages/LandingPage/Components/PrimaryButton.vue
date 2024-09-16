@@ -1,11 +1,15 @@
+<script setup>
+import { Link } from '@inertiajs/inertia-vue3';
+const props = defineProps(['href']);
+</script>
+
 <template>
-    <!-- Base -->
-    <a class="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring" href="#">
-        <span class="absolute inset-0 border border-red-600 group-active:border-red-500"></span>
-        <span
-            class="block border border-red-600 bg-red-600 px-12 py-3 transition-transform active:border-red-500 active:bg-red-500 group-hover:-translate-x-1 group-hover:-translate-y-1">
-            Download
+    <Link :href="href" 
+           class="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring">
+        <span class="absolute inset-0 border border-color-btn-sc group-active:border-color-btn-sc"></span>
+        <span class="block border border-color-btn-sc bg-color-btn-sc px-4 md:px-8 py-3 transition-transform active:border-color-btn-sc active:bg-color-btn-sc group-hover:-translate-x-1 group-hover:-translate-y-1">
+            <slot/>
         </span>
-    </a>
+    </Link>
 
 </template>
