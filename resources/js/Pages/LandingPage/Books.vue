@@ -19,7 +19,7 @@ const props = defineProps({
             </picture>
             <div class="icon">
               <Link :href="route('book.show', { id: libro.key.replace('/works/', '') })" class="iconBox">
-                <LaExternalLinkAltSolid class="text-2xl"/>
+                <LaExternalLinkAltSolid class="text-2xl dark:fill-color-dark"/>
               </Link>
             </div>
           </div>

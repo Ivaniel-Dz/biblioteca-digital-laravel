@@ -27,7 +27,7 @@ function toggleMenu() {
 <template>
     <header class="w-full flex md:fixed h-16 items-center gap-8 bg-color-main dark:bg-color-dark px-pdg-mobile md:px-pdg-tablet z-10">
         <!-- Logo -->
-        <a class="block text-color-txt ml-[-7px]" href="#">
+        <a class="block text-color-txt ml-[-7px]" href="/#home">
             <span class="sr-only">Home</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-books stroke-color-txt dark:stroke-color-txt-dark" width="44" height="44"
                 viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round"
