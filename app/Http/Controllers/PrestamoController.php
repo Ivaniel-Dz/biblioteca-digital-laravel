@@ -12,7 +12,7 @@ class PrestamoController extends Controller
     // Muestra (get)  la tabla de usuarios con sus prestamos
     public function index()
     {
-        return Inertia::render('Prestamos/Index', ['prestamos' => Prestamo::with('libro', 'usuario')->paginate(5)]);
+        return Inertia::render('Prestamos/Index', ['prestamos' => Prestamo::with('usuario')->paginate(5)]);
     }
 
     // Redirige al formulario
