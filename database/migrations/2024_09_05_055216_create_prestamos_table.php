@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('prestamos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('libro_id')->constrained('libros')->onDelete('cascade');
+            $table->integer('libro_id')->unique();
             $table->date('fecha_prestamo');
             $table->date('fecha_devolucion')->nullable();
             $table->timestamps();

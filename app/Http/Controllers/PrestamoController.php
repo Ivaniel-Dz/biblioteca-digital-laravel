@@ -12,7 +12,7 @@ class PrestamoController extends Controller
     // Muestra (get)  la tabla de usuarios con sus prestamos
     public function index()
     {
-        return Inertia::render('Prestamos/Index',['prestamos'=> Prestamo::with('libro', 'usuario')->paginate(5)]);
+        return Inertia::render('Prestamos/Index', ['prestamos' => Prestamo::with('libro', 'usuario')->paginate(5)]);
     }
 
     // Redirige al formulario
@@ -21,10 +21,10 @@ class PrestamoController extends Controller
         // Asegúrate de eliminar el prefijo '/works/' si está presente
         $id = str_replace('/works/', '', $id);
 
-        $response = Http::get("https://openlibrary.org/works/{$id}.json");
+        $response = Http::get("https://openlibrary.org/works/OL{$id}W.json");
         $book = $response->json();
 
-        if(!$book) {
+        if (!$book) {
             abort(404, 'Libro no encontrado');
         }
 
@@ -34,10 +34,11 @@ class PrestamoController extends Controller
     }
 
     // Guardar (POST) el Formulario
-    public function store(Request $request)
-    {
+ public function store(Request $request)
+{
+    try {
         $request->validate([
-            'libro_id' => 'required|exists:libros,id',
+            'libro_id' => 'required|numeric',
             'fecha_prestamo' => 'required|date',
         ]);
 
@@ -47,8 +48,12 @@ class PrestamoController extends Controller
             'fecha_prestamo' => $request->fecha_prestamo,
         ]);
 
-        return redirect()->route('prestamos.index');
+        return response()->json(['message' => 'Cita guardada exitosamente!'], 201);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Error al guardar el préstamo', 'details' => $e->getMessage()], 500);
     }
+}
+
 
     // Actualiza (PUT) los datos
     public function update(Request $request, Prestamo $prestamo)

@@ -10,20 +10,20 @@
     </div>
 
     <form @submit.prevent="submitForm" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
-
+      <input type="hidden" name="_token" :value="csrfToken" />
       <div class="relative">
         <h3 id="libro" class="w-full rounded-lg border-gray-200 p-4 pt-6 text-sm shadow-sm"> 
-          {{form.libro }} 
+          {{book.title }} 
         </h3>
 
         <label for="libro"
           class="absolute left-3 -top-2 text-sm text-gray-500 bg-white px-1 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-3 peer-focus:text-blue-500">
-          Libro a pedir {{ form.id }}
+          Libro a pedir
         </label>
       </div>
 
         <div class="relative">
-          <input v-model="form.fecha" type="date" id="fecha"
+          <input v-model="form.fecha_prestamo" type="date" id="fecha"
             class="w-full rounded-lg border-gray-200 p-4 pt-6 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 peer"
             placeholder=" " />
           <label for="fecha"
@@ -42,17 +42,45 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 
 const props = defineProps({
   book: Object
 });
 
-const form = ref({
-  id: props.book.key.replace('/works/', ''),
-  libro: props.book.title,
-  fecha: "",
+const form = reactive({
+  libro_id: props.book.key.replace('/works/', '').replace(/\D/g, ''),
+  fecha_prestamo: '',
 });
 
+// Objeto de errores
+const errors = ref({});
+
+async function submitForm() {
+  try {
+    const response = await fetch("/prestamos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-TOKEN": document
+          .querySelector('meta[name="csrf-token"]')
+          .getAttribute("content"),
+      },
+      body: JSON.stringify(form),
+    });
+
+    // Verifica si la respuesta es correcta
+    if (!response.ok) {
+      // Si no es 200, lanza error
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    // Si la respuesta es correcta, intenta convertir a JSON
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error al enviar el formulario:", error);
+  }
+}
 
 </script>

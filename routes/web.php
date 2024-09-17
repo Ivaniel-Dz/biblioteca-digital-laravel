@@ -65,13 +65,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/prestamos', [PrestamoController::class, 'index'])->name('prestamos.index');
     Route::get('/prestamos/create/{id}', [PrestamoController::class, 'create'])->name('prestamos.create');
     Route::post('/prestamos', [PrestamoController::class, 'store'])->name('prestamos.store');
-    Route::put('/prestamos/{prestamo}', [PrestamoController::class, 'update'])->name('prestamos.update');
+    Route::put('/prestamos/{id}', [PrestamoController::class, 'update'])->name('prestamos.update');
     
     // Rutas para reservas
     Route::get('/reservas', [ReservaController::class, 'index'])->name('reservas.index');
-    Route::get('/reservas/create', [ReservaController::class, 'create'])->name('reservas.create');
+    Route::get('/reservas/create/{id}', [ReservaController::class, 'create'])->name('reservas.create');
     Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');
-    Route::delete('/reservas/{reserva}', [ReservaController::class, 'destroy'])->name('reservas.destroy');
+    Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('reservas.destroy');
 });
 
 require __DIR__.'/auth.php';
