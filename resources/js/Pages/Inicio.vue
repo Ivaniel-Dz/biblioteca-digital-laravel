@@ -11,7 +11,7 @@ import Footer from './LandingPage/Layouts/Footer.vue';
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
-    books: Array,
+    books: Object,
 });
 </script>
 

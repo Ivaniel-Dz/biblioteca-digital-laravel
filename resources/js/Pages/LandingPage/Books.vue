@@ -3,7 +3,7 @@ import { LaExternalLinkAltSolid } from '@kalimahapps/vue-icons';
 import { Link } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
-  libros: Array
+  libros: Object,
 });
 </script>
 

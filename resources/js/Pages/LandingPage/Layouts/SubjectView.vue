@@ -5,8 +5,8 @@ import Header from './Header.vue';
 import Footer from './Footer.vue';
 
 const props = defineProps({
-  libros: Array,
-  title: Object,
+  libros: Object,
+  title: String,
 });
 
 </script>
