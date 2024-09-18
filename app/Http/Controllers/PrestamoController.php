@@ -12,7 +12,7 @@ class PrestamoController extends Controller
     // Muestra (get)  la tabla de usuarios con sus prestamos
     public function index()
     {
-        return Inertia::render('Prestamos/Index', ['prestamos' => Prestamo::with('usuario')->paginate(5)]);
+        return Inertia::render('Prestamos/Index', ['prestamos' => Prestamo::with('usuario')->paginate(10)]);
     }
 
     // Redirige al formulario
@@ -34,34 +34,34 @@ class PrestamoController extends Controller
     }
 
     // Guardar (POST) el Formulario
- public function store(Request $request)
-{
-    try {
-        $request->validate([
-            'libro_id' => 'required|numeric',
-            'fecha_prestamo' => 'required|date',
-        ]);
+    public function store(Request $request)
+    {
+        try {
+            $request->validate([
+                'libro_id' => 'required|numeric',
+                'fecha_prestamo' => 'required|date',
+            ]);
 
-        Prestamo::create([
-            'user_id' => auth()->id(),
-            'libro_id' => $request->libro_id,
-            'fecha_prestamo' => $request->fecha_prestamo,
-        ]);
+            Prestamo::create([
+                'user_id' => auth()->id(),
+                'libro_id' => $request->libro_id,
+                'fecha_prestamo' => $request->fecha_prestamo,
+            ]);
 
-        return response()->json(['message' => 'Cita guardada exitosamente!'], 201);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Error al guardar el préstamo', 'details' => $e->getMessage()], 500);
+            return response()->json(['message' => 'Registro guardada exitosamente!'], 201);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al guardar el registro', 'details' => $e->getMessage()], 500);
+        }
     }
-}
-
 
     // Actualiza (PUT) los datos
-    public function update(Request $request, Prestamo $prestamo)
+    public function update($id)
     {
+        $prestamo = Prestamo::findOrFail($id);
         $prestamo->update([
             'fecha_devolucion' => now(),
         ]);
 
-        return redirect()->route('prestamos.index');
+        return response()->json(['message' => 'Préstamo actualizado'], 200);
     }
 }

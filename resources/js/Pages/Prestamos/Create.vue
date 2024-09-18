@@ -2,7 +2,7 @@
   <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-lg text-center">
       <h1 class="text-2xl font-bold sm:text-3xl">
-        Registro de Préstamos
+        Registro de Préstamos de Libro
       </h1>
 
       <p class="mt-4 text-gray-500">
@@ -28,7 +28,7 @@
       <div class="relative">
         <input v-model="form.fecha_prestamo" type="date" id="fecha"
           class="w-full rounded-lg border-gray-200 p-4 pt-6 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 peer"
-          placeholder=" " />
+          placeholder=" " required/>
         <label for="fecha"
           class="absolute left-3 -top-2 text-sm text-gray-500 bg-white px-1 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:left-4 peer-placeholder-shown:text-gray-400 peer-focus:-top-2 peer-focus:left-3 peer-focus:text-blue-500">
           Fecha de Prestamo
@@ -36,7 +36,7 @@
       </div>
 
       <div class="flex items-center justify-between">
-        <button type="submit" class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">
+        <button type="submit" class="inline-block rounded border border-indigo-600 bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none active:text-indigo-500">
           Registrar
         </button>
       </div>
@@ -85,6 +85,7 @@ async function submitForm() {
     // Si la respuesta es correcta, intenta convertir a JSON
     const data = await response.json();
     console.log(data);
+    
   } catch (error) {
     console.error("Error al enviar el formulario:", error);
   }

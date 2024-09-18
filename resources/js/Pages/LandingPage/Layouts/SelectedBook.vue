@@ -51,7 +51,7 @@ const props = defineProps({
     <!-- Botones -->
     <div class="flex px-10 md:py-3 gap-4">
       <PrimaryButton :href="route('prestamos.create', { id: book.key.replace('/works/', '').replace(/\D/g, '') })" > Prestamo </PrimaryButton>
-      <SecondaryButton> Reservar </SecondaryButton>
+      <SecondaryButton :href="route('reservas.create', { id: book.key.replace('/works/', '').replace(/\D/g, '') })" > Reservar </SecondaryButton>
       <IconButton> <BsBookmarkPlus/> </IconButton>
       <IconButton> <AkHeart/> </IconButton>
     </div>

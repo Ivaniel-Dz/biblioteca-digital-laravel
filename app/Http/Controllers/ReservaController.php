@@ -3,42 +3,63 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reserva;
-use App\Models\Libro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Inertia\Inertia;
 
 class ReservaController extends Controller
 {
+    // get: muestra la tabla de registro
     public function index()
     {
-        $reservas = Reserva::with('libro', 'usuario')->get();
-        return view('reservas.index', compact('reservas'));
+        return Inertia::render('Reservas/Index', ['reservas' => Reserva::with('usuario')->paginate(10)]);
     }
 
-    public function create()
+    // get: muestra el formulario a llenar
+    public function create($id)
     {
-        $libros = Libro::all();
-        return view('reservas.create', compact('libros'));
+        // Asegúrate de eliminar el prefijo '/works/' si está presente
+        $id = str_replace('/works/', '', $id);
+
+        $response = Http::get("https://openlibrary.org/works/OL{$id}W.json");
+        $book = $response->json();
+
+        if (!$book) {
+            abort(404, 'Libro no encontrado');
+        }
+
+        return Inertia::render('Reservas/Create', [
+            'book' => $book
+        ]);
     }
 
+    // put: guarda el formulario
     public function store(Request $request)
     {
-        $request->validate([
-            'libro_id' => 'required|exists:libros,id',
-            'fecha_reserva' => 'required|date',
-        ]);
+        try {
+            $request->validate([
+                'libro_id' => 'required|numeric',
+                'fecha_reserva' => 'required|date',
+            ]);
 
-        Reserva::create([
-            'user_id' => auth()->id(),
-            'libro_id' => $request->libro_id,
-            'fecha_reserva' => $request->fecha_reserva,
-        ]);
+            Reserva::create([
+                'user_id' => auth()->id(),
+                'libro_id' => $request->libro_id,
+                'fecha_reserva' => $request->fecha_reserva,
+            ]);
 
-        return redirect()->route('reservas.index');
+            return response()->json(['message' => 'Registro guardada exitosamente!'], 201);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Error al guardar el registro', 'details' => $e->getMessage()], 500);
+        }
     }
 
-    public function destroy(Reserva $reserva)
+    // delete: elimina el registro
+    public function destroy($id)
     {
+        $reserva = Reserva::findOrFail($id);
         $reserva->delete();
-        return redirect()->route('reservas.index');
+        
+        return response()->json(['message' => 'Reserva cancelada'], 200);
     }
 }
