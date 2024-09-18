@@ -85,6 +85,8 @@ async function submitForm() {
     // Si la respuesta es correcta, intenta convertir a JSON
     const data = await response.json();
     console.log(data);
+
+    window.history.back();
     
   } catch (error) {
     console.error("Error al enviar el formulario:", error);
