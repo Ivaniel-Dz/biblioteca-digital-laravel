@@ -153,3 +153,34 @@ Tablas de la BD del Proyecto
 
 ## Uso del API
 https://openlibrary.org/developers/api
+
+## Detalles en proceso que faltan
+- Pasar el form de reserva y préstamo a un modal
+- agregar alert de confirmación en los procesos de registro de form
+- Referenciar los libros del API con el id de los libros de Prestamos y reserva para la BD
+- Configurar menu que las opciones se muestren según el rol
+
+## Mejoras Futuras del proyecto
+1. **Generación de informes y estadísticas:**
+    - Implementar un módulo para generar informes sobre el uso de los libros (préstamos, libros más populares, etc.).
+    - Configurar la visualización de estos informes en el panel administrativo.
+
+2. **Gestión del catálogo de libros por administradores:**
+    - Implementar funcionalidades CRUD para que los administradores puedan agregar, editar y eliminar libros del catálogo.
+    - Añadir la capacidad de cargar portadas de libros de manera manual si no están disponibles en la API.
+
+## Preview
+### Landing Page
+![preview](/public/images/preview/preview.gif)
+
+### Libros por géneros
+![preview](/public/images/preview/preview2.jpeg)
+
+### Book Info
+![preview](/public/images/preview/preview1.jpeg)
+
+### Form de Reserva y Préstamo
+![preview](/public/images/preview/preview5.png)
+
+### Dashboard
+![preview](/public/images/preview/preview3.jpeg)
