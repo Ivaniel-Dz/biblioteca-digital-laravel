@@ -15,14 +15,14 @@ class UserSeeder extends Seeder
                 'name' => 'Admin User',
                 'email' => 'admin@example.com',
                 'password' => Hash::make('password123'), // Usa una contraseña encriptada
-                'rol' => 'admin',
+                'role' => 'admin',
                 'email_verified_at' => now(),
             ],
             [
                 'name' => 'Regular User',
                 'email' => 'user@example.com',
                 'password' => Hash::make('password123'), // Usa una contraseña encriptada
-                'rol' => 'usuario',
+                'role' => 'user',
                 'email_verified_at' => now(),
             ],
             // Agrega más usuarios si lo deseas

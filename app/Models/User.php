@@ -11,93 +11,60 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
         'password',
-        'rol'
+        'role',  // Incluimos el campo role en fillable
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
 
-    /**
-     * Check if the user is an admin.
-     *
-     * @return bool
-     */
+    // Función para verificar si el usuario es admin
     public function isAdmin()
     {
-        return $this->rol === 'admin';
+        return $this->role === 'admin';
     }
 
-    /**
-     * Check if the user is a regular user.
-     *
-     * @return bool
-     */
-    public function isRegularUser()
+    // Función para verificar si el usuario es normal
+    public function isUser()
     {
-        return $this->rol === 'usuario';
+        return $this->role === 'user';
     }
 
-    /**
-     * The user's loans.
-     */
+    // The user's loans.
     public function prestamos()
     {
         return $this->hasMany(Prestamo::class);
     }
 
-    /**
-     * The user's reservations.
-     */
+    // The user's reservations.
     public function reservas()
     {
         return $this->hasMany(Reserva::class);
     }
 
-    /**
-     * The user's fines.
-     */
+    // The user's fines.
     public function multas()
     {
         return $this->hasMany(Multa::class);
     }
 
-    /**
-     * The user's history.
-     */
+    // The user's history.
     public function historial()
     {
         return $this->hasMany(HistorialUsuario::class);
     }
 
-    /**
-     * The user's book activities.
-     */
+
+    // The user's book activities.     
     public function actividadesLibros()
     {
         return $this->hasMany(ActividadUsuarioLibro::class);
