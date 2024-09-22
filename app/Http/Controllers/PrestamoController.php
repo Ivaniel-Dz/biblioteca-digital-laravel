@@ -64,4 +64,11 @@ class PrestamoController extends Controller
 
         return response()->json(['message' => 'Préstamo actualizado'], 200);
     }
+
+
+    // Muestra el historial de prestamo de un usuario especifico
+    public function historial()
+    {
+        return Inertia::render('Prestamos/Historial', ['prestamos' => Prestamo::with('usuario')->paginate(10)]);
+    }
 }

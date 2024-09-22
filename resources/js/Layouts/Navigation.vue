@@ -36,6 +36,15 @@
           </NavLink>
         </li>
 
+                <li class="relative px-6 py-3">
+          <NavLink :href="route('prestamos.historial')" :active="route().current('prestamos.historial')">
+            <template #icon>
+              <LaBookSolid class="w-5 h-5" />
+            </template>
+            Prestamos
+          </NavLink>
+        </li>
+
         <li class="relative px-6 py-3">
           <button @click="showingTwoLevelMenu = !showingTwoLevelMenu"
             class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800"

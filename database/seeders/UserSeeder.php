@@ -12,14 +12,14 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'Admin User',
+                'name' => 'Administrador',
                 'email' => 'admin@example.com',
                 'password' => Hash::make('password123'), // Usa una contraseña encriptada
                 'role' => 'admin',
                 'email_verified_at' => now(),
             ],
             [
-                'name' => 'Regular User',
+                'name' => 'Usuario',
                 'email' => 'user@example.com',
                 'password' => Hash::make('password123'), // Usa una contraseña encriptada
                 'role' => 'user',

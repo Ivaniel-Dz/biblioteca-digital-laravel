@@ -50,6 +50,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     
     // Gestión de usuarios
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    // Gestión de Prestamos
+    Route::get('/prestamos', [PrestamoController::class, 'index'])->name('prestamos.index');
+    Route::put('/prestamos/{id}', [PrestamoController::class, 'update'])->name('prestamos.update');
+    // Gestión de Reservas
+    Route::get('/reservas', [ReservaController::class, 'index'])->name('reservas.index');
+    Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('reservas.destroy');
+    // Gestión de Libros (add, update, delete)
+    // Gestión de informes
 });
 
 // Rutas accesibles para cualquier usuario autenticado
@@ -62,16 +70,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Rutas para préstamos y reservas (usuarios normales)
-    Route::get('/prestamos', [PrestamoController::class, 'index'])->name('prestamos.index');
+    // Ruta para crear Prestamos
     Route::get('/prestamos/create/{id}', [PrestamoController::class, 'create'])->name('prestamos.create');
     Route::post('/prestamos', [PrestamoController::class, 'store'])->name('prestamos.store');
-    Route::put('/prestamos/{id}', [PrestamoController::class, 'update'])->name('prestamos.update');
-    
-    Route::get('/reservas', [ReservaController::class, 'index'])->name('reservas.index');
+    // Historial de Prestamos
+    Route::get('/historial', [PrestamoController::class, 'historial'])->name('prestamos.historial');
+
+    // Ruta para crear Reservas
     Route::get('/reservas/create/{id}', [ReservaController::class, 'create'])->name('reservas.create');
     Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');
-    Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('reservas.destroy');
+    //Historial de Reservas
+
 });
 
 // Rutas de autenticación proporcionadas por Laravel Breeze
