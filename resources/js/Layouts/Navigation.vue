@@ -18,6 +18,7 @@
           </NavLink>
         </li>
 
+        <!-- Admin Links -->
         <li class="relative px-6 py-3">
           <NavLink :href="route('users.index')" :active="route().current('users.index')">
             <template #icon>
@@ -36,12 +37,22 @@
           </NavLink>
         </li>
 
-                <li class="relative px-6 py-3">
+        <!-- Users Link -->
+        <li class="relative px-6 py-3">
           <NavLink :href="route('prestamos.historial')" :active="route().current('prestamos.historial')">
             <template #icon>
-              <LaBookSolid class="w-5 h-5" />
+              <FlHistory class="w-5 h-5" />
             </template>
-            Prestamos
+            Préstamos
+          </NavLink>
+        </li>
+
+        <li class="relative px-6 py-3">
+          <NavLink :href="route('reservas.historial')" :active="route().current('reservas.historial')">
+            <template #icon>
+              <FlHistory class="w-5 h-5" />
+            </template>
+            Reservas
           </NavLink>
         </li>
 
@@ -82,7 +93,7 @@
 </template>
 
 <script>
-import { PhLightBooks, LaBookSolid, LaHomeSolid, LuMenu, LiUsers, PhThinFolderOpen, IcNavArrowDown } from '@kalimahapps/vue-icons';
+import { PhLightBooks, LaBookSolid, LaHomeSolid, LuMenu, LiUsers, PhThinFolderOpen, IcNavArrowDown, FlHistory } from '@kalimahapps/vue-icons';
 import NavLink from "@/Components/NavLink.vue";
 import { Link } from "@inertiajs/vue3";
 import { ref } from "vue";
@@ -98,6 +109,7 @@ export default {
     LiUsers,
     PhThinFolderOpen,
     IcNavArrowDown,
+    FlHistory,
   },
 
   setup() {

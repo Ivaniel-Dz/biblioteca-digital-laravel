@@ -62,4 +62,16 @@ class ReservaController extends Controller
         
         return response()->json(['message' => 'Reserva cancelada'], 200);
     }
+
+    // Muestra el historial de reservas de un usuario especifico
+    public function historial()
+    {
+        $usuarioId = auth()->id(); // Obtiene el ID del usuario autenticado
+        $reservas = Reserva::with('usuario')->where('user_id', $usuarioId)->paginate(10);
+
+        return Inertia::render('Reservas/Historial', [
+            'reservas' => $reservas,
+            'usuarioId' => $usuarioId,
+        ]);
+    }
 }

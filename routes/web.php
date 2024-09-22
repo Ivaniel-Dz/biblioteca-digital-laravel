@@ -47,7 +47,7 @@ Route::get('/dashboard', [UserController::class, 'dashboard'])
 Route::middleware(['auth', 'admin'])->group(function () {
     // Dashboard de administrador
     Route::get('/admin', [UserController::class, 'adminDashboard'])->name('admin.dashboard');
-    
+
     // Gestión de usuarios
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     // Gestión de Prestamos
@@ -63,7 +63,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // Rutas accesibles para cualquier usuario autenticado
 Route::middleware('auth')->group(function () {
     // Información sobre la aplicación
-    Route::get('/about', fn () => Inertia::render('About'))->name('about');
+    Route::get('/about', fn() => Inertia::render('About'))->name('about');
 
     // Perfil de usuario
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -74,14 +74,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/prestamos/create/{id}', [PrestamoController::class, 'create'])->name('prestamos.create');
     Route::post('/prestamos', [PrestamoController::class, 'store'])->name('prestamos.store');
     // Historial de Prestamos
-    Route::get('/historial', [PrestamoController::class, 'historial'])->name('prestamos.historial');
+    Route::get('/prestamos/historial', [PrestamoController::class, 'historial'])->name('prestamos.historial');
 
     // Ruta para crear Reservas
     Route::get('/reservas/create/{id}', [ReservaController::class, 'create'])->name('reservas.create');
     Route::post('/reservas', [ReservaController::class, 'store'])->name('reservas.store');
     //Historial de Reservas
-
+    Route::get('/reservas/historial', [ReservaController::class, 'historial'])->name('reservas.historial');
 });
 
 // Rutas de autenticación proporcionadas por Laravel Breeze
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

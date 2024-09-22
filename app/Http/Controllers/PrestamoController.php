@@ -69,6 +69,12 @@ class PrestamoController extends Controller
     // Muestra el historial de prestamo de un usuario especifico
     public function historial()
     {
-        return Inertia::render('Prestamos/Historial', ['prestamos' => Prestamo::with('usuario')->paginate(10)]);
+        $usuarioId = auth()->id(); // Obtiene el ID del usuario autenticado
+        $prestamos = Prestamo::with('usuario')->where('user_id', $usuarioId)->paginate(10);
+
+        return Inertia::render('Prestamos/Historial', [
+            'prestamos' => $prestamos,
+            'usuarioId' => $usuarioId,
+        ]);
     }
 }
