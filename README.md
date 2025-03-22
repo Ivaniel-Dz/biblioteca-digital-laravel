@@ -9,7 +9,6 @@
 - [Oracle Database](https://docs.oracle.com/en/cloud/paas/base-database/index.html)
 
 
-
 ## Creación del proyecto
 1. Creación del Proyecto
 ```bash
@@ -169,7 +168,106 @@ https://openlibrary.org/developers/api
     - Implementar funcionalidades CRUD para que los administradores puedan agregar, editar y eliminar libros del catálogo.
     - Añadir la capacidad de cargar portadas de libros de manera manual si no están disponibles en la API.
 
-## Preview
+# Pasos para instalar y ejecutar el proyecto en Local
+
+📌 **Antes de comenzar, asegúrate de tener instalados:**  
+- **PHP 8.2 o superior** (requerido para Laravel 11).  
+- **Composer** (para instalar dependencias de Laravel).  
+- **Node.js & npm** (para Vue 3, Inertia y Tailwind CSS).  
+- **Oracle Database** (puede ser **Oracle 19c, 21c, etc.**).  
+- **Oracle Instant Client** (para conectar Laravel con Oracle).  
+
+### 🔹 **1. Instalar dependencias de Laravel**
+Ejecuta:  
+```sh
+composer install
+```
+
+---
+
+### 🔹 **2. Configurar el archivo `.env` para Oracle**
+Copia el archivo de configuración:  
+```sh
+cp .env.example .env
+```
+Luego, abre **`.env`** y configura la conexión con Oracle:  
+```ini
+DB_CONNECTION=oracle
+DB_HOST=127.0.0.1
+DB_PORT=1521
+DB_DATABASE=ORCL # Cambia según tu servicio de Oracle
+DB_USERNAME=LIBRERIA
+DB_PASSWORD=LB2024
+```
+Si Oracle está en otro servidor, cambia **`DB_HOST`** a la IP correcta.  
+
+---
+
+### 🔹 **3. Generar la clave de la aplicación**
+```bash
+php artisan key:generate
+```
+Esto generará la clave de seguridad en el ``.env``.
+
+
+### 🔹 **4. Instalar el driver de Oracle para Laravel**
+Ejecuta:  
+```sh
+composer require yajra/laravel-oci8
+```
+Este paquete (`yajra/laravel-oci8`) es el **driver oficial para conectar Laravel con Oracle**.  
+
+Después, **ejecuta el siguiente comando para publicar la configuración**:  
+```sh
+php artisan vendor:publish --tag=oracle
+```
+Esto generará un archivo de configuración en `config/oracle.php`.  
+
+---
+
+### 🔹 **5. Instalar dependencias de Vue, Inertia y Tailwind**
+Ejecuta:  
+```sh
+npm install
+```
+Si hay errores, intenta limpiar la caché:  
+```sh
+rm -rf node_modules package-lock.json && npm install
+```
+
+---
+
+### 🔹 **6. Compilar assets de Vue y Tailwind**
+```sh
+npm run dev
+```
+Para producción:  
+```sh
+npm run build
+```
+
+---
+
+### 🔹 **7. Ejecutar migraciones en Oracle**
+Si el proyecto usa migraciones, ejecútalas con:  
+```sh
+php artisan migrate
+```
+Si hay errores, revisa que la conexión con Oracle esté funcionando correctamente.  
+
+Si Oracle no permite migraciones automáticas, **puedes exportar/importar el esquema manualmente** usando herramientas como **SQL Developer o Data Pump**.  
+
+---
+
+### 🔹 **8. Iniciar el servidor de Laravel**
+Ejecuta:  
+```sh
+php artisan serve
+```
+🔗 **Accede en:** `http://127.0.0.1:8000`  
+
+
+# Preview
 ### Landing Page
 ![preview](/public/images/preview/preview.gif)
 
