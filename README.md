@@ -269,16 +269,28 @@ php artisan serve
 
 # Preview
 ### Landing Page
-![preview](/public/images/preview/preview.gif)
+![preview](/public/images/preview/preview1.gif)
+
+### Landing Page
+![preview](/public/images/preview/page-1.jpeg)
+
+### Landing Page Dark
+![preview](/public/images/preview/page-2.jpeg)
 
 ### Libros por géneros
 ![preview](/public/images/preview/preview2.jpeg)
 
 ### Book Info
-![preview](/public/images/preview/preview1.jpeg)
+![preview](/public/images/preview/preview3.jpeg)
 
 ### Form de Reserva y Préstamo
-![preview](/public/images/preview/preview5.png)
+![preview](/public/images/preview/preview4.png)
+
+### Registro
+![preview](/public/images/preview/preview5.jpeg)
+
+### Login
+![preview](/public/images/preview/preview6.jpeg)
 
 ### Dashboard
-![preview](/public/images/preview/preview3.jpeg)
+![preview](/public/images/preview/preview7.jpeg)
